@@ -1,0 +1,8 @@
+[alias]
+    hist = log --pretty=format:\"%C(yellow)%h%Creset | %ad %C(red)(%ar)%Creset | %C(bold blue)[%an]%Creset - %s%d\" --graph --date=short
+
+[color]
+    ui = true
+
+[credential]
+    helper = cache --timeout 28800

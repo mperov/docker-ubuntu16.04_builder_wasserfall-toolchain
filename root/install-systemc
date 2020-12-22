@@ -1,0 +1,25 @@
+#!/bin/bash
+
+# downloading SystemC library
+wget -O /tmp/systemc.tar.gz http://www.accellera.org/images/downloads/standards/systemc/systemc-2.3.1a.tar.gz
+
+# extracting
+cd /tmp
+mkdir systemc
+tar -xzf systemc.tar.gz -C systemc --strip-components=1
+cd systemc
+
+# building
+mkdir build
+cd build
+export CXX=g++
+../configure --prefix=/opt/systemc --with-unix-layout -q
+make
+sudo make install
+
+# cleaning
+cd ../../
+rm systemc.tar.gz
+rm -rf systemc
+
+ln -s -f /opt/systemc/lib/libsystemc-2.3.1.so /usr/lib/libsystemc-2.3.1.so
